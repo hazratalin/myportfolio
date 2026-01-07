@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alex Carter | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      /* ===== CANVAS BACKGROUND ===== */
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ===== SECTIONS ===== */
+      section {
+        padding: 100px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Fade animation */
+      .fade-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+      .fade-section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== SMALL THEME SWITCH ===== */
+      .theme-switch {
+        position: relative;
+        width: 50px;
+        height: 24px;
+      }
+      .theme-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .switch-track {
+        background: #ced4da;
+        border-radius: 24px;
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .switch-thumb {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        top: 2px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+      }
+      .sun,
+      .moon {
+        position: absolute;
+        font-size: 12px;
+        transition: opacity 0.3s ease;
+      }
+      .sun {
+        color: #f59e0b;
+      }
+      .moon {
+        color: #0d6efd;
+        opacity: 0;
+      }
+      .theme-switch input:checked + .switch-track {
+        background: #0d6efd;
+      }
+      .theme-switch input:checked + .switch-track .switch-thumb {
+        transform: translateX(26px);
+      }
+      .theme-switch input:checked + .switch-track .sun {
+        opacity: 0;
+      }
+      .theme-switch input:checked + .switch-track .moon {
+        opacity: 1;
+      }
+
+      /* ===== ACTIVE NAV LINK ===== */
+      .nav-link.active {
+        color: #0d6efd !important;
+        font-weight: bold;
+      }
+
+      /* ===== BACK TO TOP BUTTON ===== */
+      #topBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 100;
+        display: none;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      body[data-bs-theme="light"] #topBtn {
+        background-color: #0d6efd;
+        color: #fff;
+      }
+      body[data-bs-theme="dark"] #topBtn {
+        background-color: #6c757d;
+        color: #fff;
+      }
+      #topBtn:hover {
+        filter: brightness(0.85);
+      }
+    </style>
+  </head>
+  <body data-bs-theme="light">
+    <!-- CANVAS BACKGROUND -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow" id="navbar">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Alex Carter</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-links">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">Experience</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+
+          <!-- SMALL THEME SWITCH -->
+          <label class="theme-switch ms-lg-3">
+            <input type="checkbox" id="themeToggle" />
+            <div class="switch-track">
+              <div class="switch-thumb">
+                <i class="bi bi-sun-fill sun"></i>
+                <i class="bi bi-moon-stars-fill moon"></i>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section
+      class="vh-100 d-flex align-items-center text-center position-relative overflow-hidden"
+    >
+      <div class="container" style="z-index: 1">
+        <h1 class="display-4 fw-bold">Alex Carter</h1>
+        <p class="lead text-primary">Student / Developer / Designer</p>
+        <a href="resume.pdf" download class="btn btn-primary btn-lg mt-3">
+          <i class="bi bi-download"></i> Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-section">
+      <div class="container text-center">
+        <h2 class="mb-4">About Me</h2>
+        <p class="col-md-8 mx-auto">
+          I am a motivated student and creative developer passionate about
+          building modern, responsive, and user-friendly web applications.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="bg-light fade-section">
+      <div class="container">
+        <h2 class="text-center mb-5">Skills</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">HTML & CSS</div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">JavaScript</div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">React</div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">UI / UX Design</div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">Git & GitHub</div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center p-4 shadow">Figma</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="fade-section">
+      <div class="container">
+        <h2 class="text-center mb-5">Projects</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card shadow p-3">
+              <h5>Portfolio Website</h5>
+              <p>Animated portfolio with dark mode.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow p-3">
+              <h5>Task Manager</h5>
+              <p>Productivity web application.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card shadow p-3">
+              <h5>Design Showcase</h5>
+              <p>Creative UI and UX designs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="bg-light fade-section">
+      <div class="container">
+        <h2 class="text-center mb-5">Experience</h2>
+        <div class="card shadow p-4 col-md-8 mx-auto">
+          <h5>Web Development Intern</h5>
+          <p class="text-muted">Creative Studio | 2024 – Present</p>
+          <p>Worked on responsive layouts and UI/UX improvements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-section">
+      <div class="container text-center">
+        <h2 class="mb-4">Contact</h2>
+        <p>Email: alex@email.com</p>
+        <p>Location: Anywhere, World</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-4" id="footer">
+      © 2026 Alex Carter. All rights reserved.
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="topBtn" title="Go to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- PARTICLE LINES JS -->
+    <script>
+      // PARTICLE LINES JS WITH MOUSE INTERACTION
+      const canvas = document.getElementById("bgCanvas");
+      const ctx = canvas.getContext("2d");
+
+      let w = (canvas.width = window.innerWidth);
+      let h = (canvas.height = window.innerHeight);
+
+      let particles = [];
+      const colors = ["#0d6efd", "#f59e0b", "#6f42c1", "#20c997"];
+
+      const mouse = { x: null, y: null };
+
+      // Update mouse position
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      // Handle mouse leaving window
+      window.addEventListener("mouseout", () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      // Create particles **after canvas size is set**
+      function createParticles(num) {
+        particles = []; // reset
+        for (let i = 0; i < num; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            r: Math.random() * 3 + 1,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            opacity: Math.random() * 0.3 + 0.1,
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        // draw lines between particles
+        for (let i = 0; i < particles.length; i++) {
+          let p1 = particles[i];
+          for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let dx = p1.x - p2.x;
+            let dy = p1.y - p2.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.strokeStyle = p1.color;
+              ctx.globalAlpha = 0.15;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+              ctx.globalAlpha = 1;
+            }
+          }
+        }
+
+        // draw lines from mouse to nearby particles
+        if (mouse.x !== null && mouse.y !== null) {
+          for (let i = 0; i < particles.length; i++) {
+            let p = particles[i];
+            let dx = p.x - mouse.x;
+            let dy = p.y - mouse.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = 0.2;
+              ctx.lineWidth = 0.7;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.stroke();
+              ctx.globalAlpha = 1;
+            }
+          }
+        }
+
+        // draw circles
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      function update() {
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+      }
+
+      function animate() {
+        draw();
+        update();
+        requestAnimationFrame(animate);
+      }
+
+      // Initial creation
+      createParticles(60);
+      animate();
+
+      // Resize handler
+      window.addEventListener("resize", () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        createParticles(60); // recreate particles to fill new canvas size
+      });
+    </script>
+
+    <!-- PORTFOLIO JS -->
+    <script>
+      const toggle = document.getElementById("themeToggle");
+      const navbar = document.getElementById("navbar");
+      const footer = document.getElementById("footer");
+
+      // THEME TOGGLE
+      toggle.addEventListener("change", () => {
+        const theme = toggle.checked ? "dark" : "light";
+        document.body.dataset.bsTheme = theme;
+
+        if (theme === "dark") {
+          navbar.classList.remove("navbar-light", "bg-light");
+          navbar.classList.add("navbar-dark", "bg-dark");
+          footer.classList.remove("bg-light", "text-dark");
+          footer.classList.add("bg-dark", "text-light");
+        } else {
+          navbar.classList.remove("navbar-dark", "bg-dark");
+          navbar.classList.add("navbar-light", "bg-light");
+          footer.classList.remove("bg-dark", "text-light");
+          footer.classList.add("bg-light", "text-dark");
+        }
+      });
+
+      // SCROLL FADE
+      const sections = document.querySelectorAll(".fade-section");
+      window.addEventListener("scroll", () => {
+        sections.forEach((sec) => {
+          if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+            sec.classList.add("show");
+          }
+        });
+      });
+
+      // ACTIVE NAV LINK
+      const navLinks = document.querySelectorAll("#navbar-links .nav-link");
+      const sectionIds = Array.from(navLinks).map((link) =>
+        link.getAttribute("href").substring(1)
+      );
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY + 200;
+        sectionIds.forEach((id, index) => {
+          const section = document.getElementById(id);
+          if (
+            section.offsetTop <= scrollPos &&
+            section.offsetTop + section.offsetHeight > scrollPos
+          ) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+            navLinks[index].classList.add("active");
+          }
+        });
+      });
+
+      // BACK TO TOP BUTTON
+      const topBtn = document.getElementById("topBtn");
+      window.addEventListener("scroll", () => {
+        if (
+          document.body.scrollTop > 300 ||
+          document.documentElement.scrollTop > 300
+        ) {
+          topBtn.style.display = "block";
+        } else {
+          topBtn.style.display = "none";
+        }
+      });
+      topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
