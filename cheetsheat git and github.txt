@@ -1,0 +1,54 @@
+first create a folder and inside a folder right click and click on Open Git Bash here
+
+ls
+pwd
+git config --global user.name ali
+git config --global user.email hazratalin@gmail.com
+git config --global user.name
+git config --global user.email
+code .
+git init
+ls -lart
+git status
+git add index.html
+git commit
+press i
+Initial commit
+after press escap
+:wq press enter
+git status
+touch about.html
+touch contact.html
+git status
+git add -A  (This command add all files in a staging area)
+git status
+work on some files after check 
+git status
+git add -A
+git status
+git commit -m "Added more html files"
+git status
+clear
+git checkout about.html  (recover only one page)
+git checkout -f   (recover your all pages which is commited the last one)
+git log
+
+//////////////////////////////////////////////////////
+
+git log -p -1  (it shows you the page and no of comments)
+
+after press q (q is for quite)
+git diff (working tree compare to staging area)
+git add -A
+git diff
+git status
+git diff --staged (staging are compare to last commit)
+
+
+
+
+
+
+
+
+
