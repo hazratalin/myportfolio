@@ -41,9 +41,33 @@ git add -A
 git diff
 git status
 git diff --staged (staging are compare to last commit)
-git commit -a -m "Skipped staging area and fixed < and it done both work add and commit"
+git commit -a -m "adding more pages"
+
+git commit – creates a new commit
+
+-a – automatically stages all modified and deleted files that are already tracked
+
+❌ does not include new (untracked) files
+
+-m "adding about page" – sets the commit message
+
+Important gotcha
+
+If about page was a new file, it will not be included in this commit.
+
+To include new files, you’d need:
+
+git add .
+git commit -m "adding about page"
+
 pwd (it shows the path of the folder)
 ls  (it shows all files inside a folder)
+touch waste.html
+git add -A
+git commit -a -m "Adding waste"
+
+git rm waste.html (Remove file)
+git rm --cached waste.html(Remove file from staging are and keep locally:)
 
 
 
