@@ -1,0 +1,126 @@
+
+Here’s a student-friendly Git & GitHub cheat sheet 🙂
+It starts from zero and goes step-by-step, with short explanations and examples.
+
+🧑‍🎓 Git & GitHub Cheat Sheet (Beginner Friendly)
+🔹 What’s the difference?
+Git → tool to track code changes (runs on your computer)
+
+GitHub → website to store & share Git repositories online
+
+🔹 1. Basic Setup (One Time Only)
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+Check settings:
+
+git config --list
+🔹 2. Start a Project
+Create a new folder & initialize Git
+git init
+Check project status:
+
+git status
+🔹 3. Add Files (Staging)
+Add one file:
+
+git add file.txt
+Add all files:
+
+git add .
+🔹 4. Commit Changes (Save Snapshot)
+git commit -m "your message here"
+Shortcut (only for already tracked files):
+
+git commit -a -m "message"
+🔹 5. Check History
+View commits:
+
+git log
+Short version:
+
+git log --oneline
+🔹 6. Connect to GitHub
+Clone an existing repo
+git clone https://github.com/username/repo-name.git
+Add GitHub remote
+git remote add origin https://github.com/username/repo-name.git
+Check remote:
+
+git remote -v
+🔹 7. Push Code to GitHub
+First push:
+
+git push -u origin main
+Normal push:
+
+git push
+🔹 8. Get Code from GitHub
+Get latest changes:
+
+git pull
+🔹 9. Branching (Working Safely)
+Create a branch:
+
+git branch new-branch
+Switch branch:
+
+git checkout new-branch
+Create + switch:
+
+git checkout -b new-branch
+List branches:
+
+git branch
+🔹 10. Merge Branches
+Switch to main:
+
+git checkout main
+Merge:
+
+git merge new-branch
+🔹 11. Undo Mistakes (Very Important!)
+Undo file before commit
+git checkout -- file.txt
+Unstage a file
+git reset file.txt
+Undo last commit (keep changes)
+git reset --soft HEAD~1
+Undo last commit (delete changes)
+git reset --hard HEAD~1
+⚠️ Be careful with --hard
+
+🔹 12. Remove Files
+Remove file:
+
+git rm file.txt
+Remove file but keep locally:
+
+git rm --cached file.txt
+🔹 13. Ignore Files (.gitignore)
+Create .gitignore file:
+
+node_modules/
+.env
+*.log
+🔹 14. GitHub Extras
+Fork a repo
+👉 Click Fork on GitHub
+
+Pull Request (PR)
+Push your branch
+
+Click New Pull Request
+
+Request merge
+
+🔹 15. Useful Shortcuts
+git status
+git diff
+git show
+git fetch
+🧠 Simple Daily Workflow (Students Should Remember)
+git status
+git add .
+git commit -m "meaningful message"
+git push
+
