@@ -1,7 +1,5 @@
 first create a folder and inside a folder right click and click on Open Git Bash here
 
-ls
-pwd
 git config --global user.name ali
 git config --global user.email hazratalin@gmail.com
 git config --global user.name
@@ -43,6 +41,9 @@ git add -A
 git diff
 git status
 git diff --staged (staging are compare to last commit)
+git commit -a -m "Skipped staging area and fixed < and it done both work add and commit"
+pwd (it shows the path of the folder)
+ls  (it shows all files inside a folder)
 
 
 
