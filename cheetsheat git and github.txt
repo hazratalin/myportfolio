@@ -90,6 +90,9 @@ git status
 git add -A
 git commit -m "Fixed extra brackets"
 git status
+get checkout master
+git log -p -2
+git merge feature1
 
 
 
