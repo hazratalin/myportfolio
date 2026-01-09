@@ -68,6 +68,29 @@ git commit -a -m "Adding waste"
 
 git rm waste.html (Remove file)
 git rm --cached waste.html(Remove file from staging are and keep locally:)
+git status -s  
+
+Common Status Codes
+Code	Meaning
+??	New (untracked) file
+M	Modified
+A	Added
+D	Deleted
+R	Renamed
+touch .gitignore
+if you added the files in gitignore 
+/mylogs.log it ignore only main directory file
+*.log	it ignore all those files which extension is .log
+
+log/  it ignore the folder
+git branch feature1
+git branch
+git checkout feature1
+git status
+git add -A
+git commit -m "Fixed extra brackets"
+git status
+
 
 
 
