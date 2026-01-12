@@ -371,26 +371,7 @@ Example:
 ✔ index.html must be lowercase
 ✔ Correct branch (main)
 
-❌ CSS / JS not loading?
 
-✔ Use relative paths
-
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-
-
-❌ NOT:
-
-C:\Users\...
-
-🔥 BONUS: Custom Domain (Optional)
-
-You can use:
-
-www.myname.com
-
-
-with GitHub Pages later.
 
 
 
