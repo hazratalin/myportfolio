@@ -1,3 +1,31 @@
+1. What is Git and GitHub?
+🔹 Git
+
+Git is a version control system
+
+It tracks changes in your code
+
+Works locally on your computer
+
+🔹 GitHub
+
+GitHub is a website that stores Git repositories online
+
+Used for backup, sharing code, and collaboration
+
+👉 Git = tool, GitHub = online platform
+
+2. Install Git
+
+Download Git from: https://git-scm.com
+
+Install it (keep default options)
+
+git --version
+
+mkdir my-first-repo
+cd my-first-repo
+
 first create a folder and inside a folder right click and click on Open Git Bash here
 
 git config --global user.name ali
@@ -93,10 +121,169 @@ git status
 get checkout master
 git log -p -2
 git merge feature1
+ git merge --abort
+
+now create a account on GitHub and click on right cornor plus + button to add new reporsitory
+after copy this link and paste into to git and enter
+
+git remote add origin git@github.com:hazratalin/myportfolio.git
+
+ git remote set-url origin https://github.com/hazratalin/myportfolio.git
+
+git remote -v
+
+git branch -M main
+git push -u origin main
+
+git status
+
+git add .
+↓
+git commit -m "message"
+↓
+git push
 
 
 
 
+
+///////////////////////////////////////////////
+
+git push origin master
+
+after click on your profile and click on settings
+
+now in left side click on SSH and GPG keys
+and click on connecting to GitHub using SSH keys
+
+click on Generating a new SSH key and adding it to the ssh-agent
+
+and paste this line on git
+ssh-keygen -t ed25519 -C "hazratalin@gmail.com"
+
+
+/////////////////////////////////////////////
+
+
+❌ Problem (Why this error happens)
+git@github.com: Permission denied (publickey).
+
+
+This means:
+
+Your remote URL is using SSH
+
+git@github.com:hazratalin/myportfolio.git
+
+
+BUT your computer does not have an SSH key added to GitHub
+
+So GitHub doesn’t know who you are.
+
+✅ TWO EASY SOLUTIONS
+
+I’ll show Option 1 (Easiest) and Option 2 (Professional SSH)
+
+✅ OPTION 1 (EASIEST – RECOMMENDED FOR BEGINNERS)
+Switch from SSH to HTTPS
+1️⃣ Change remote URL to HTTPS
+
+Run this command:
+
+git remote set-url origin https://github.com/hazratalin/myportfolio.git
+
+
+Check:
+
+git remote -v
+
+
+You should see:
+
+https://github.com/hazratalin/myportfolio.git
+
+2️⃣ Push again
+git push -u origin main
+
+
+GitHub will ask:
+
+Username → hazratalin
+
+Password → ❌ NOT your GitHub password
+👉 Use GitHub Personal Access Token
+
+3️⃣ Create GitHub Token (One Time)
+
+GitHub → Settings
+
+Developer settings
+
+Personal access tokens
+
+Tokens (classic)
+
+Generate new token
+
+Select:
+
+✅ repo
+
+Copy token
+
+📌 Paste token as password
+
+✅ DONE — your code will push successfully 🎉
+
+✅ OPTION 2 (SSH – Advanced & Professional)
+
+If you want to keep SSH (git@github.com), do this:
+
+1️⃣ Generate SSH key
+ssh-keygen -t ed25519 -C "your_email@gmail.com"
+
+
+Press Enter for everything.
+
+2️⃣ Start SSH agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+3️⃣ Copy SSH key
+cat ~/.ssh/id_ed25519.pub
+
+
+Copy the output.
+
+4️⃣ Add key to GitHub
+
+GitHub → Settings
+
+SSH and GPG keys
+
+New SSH key
+
+Paste key
+
+Save
+
+5️⃣ Test connection
+ssh -T git@github.com
+
+
+You should see:
+
+Hi hazratalin! You've successfully authenticated.
+
+
+Now push:
+
+git push -u origin main
+
+✅ WHAT I RECOMMEND FOR YOU
+
+👉 Use OPTION 1 (HTTPS) for now
+👉 Later, learn SSH
 
 
 
