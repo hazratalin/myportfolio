@@ -285,8 +285,112 @@ git push -u origin main
 👉 Use OPTION 1 (HTTPS) for now
 👉 Later, learn SSH
 
+/////////////////////////////////////////////////
+You want to open your GitHub repository as a website so that when you enter a URL, index.html opens automatically.
+
+This is done using GitHub Pages.
+
+✅ REQUIREMENTS (Important)
+
+✔ Repository must be public
+✔ Must contain index.html in:
+
+root folder OR
+
+/docs folder
+✔ Code must be pushed to GitHub
+
+STEP-BY-STEP: HOST WEBSITE USING GITHUB PAGES 🌍
+1️⃣ Make sure index.html is in root
+
+Your repo structure should look like this:
+
+myportfolio
+├── index.html
+├── style.css
+├── script.js
 
 
+If index.html is inside another folder (like /portfolio), it will NOT work.
+
+2️⃣ Push Latest Code (If Needed)
+git add .
+git commit -m "Add website files"
+git push
+
+3️⃣ Enable GitHub Pages
+
+Go to your repository on GitHub
+👉 https://github.com/hazratalin/myportfolio
+
+Click Settings
+
+Click Pages (left sidebar)
+
+Under Source:
+
+Branch: main
+
+Folder: / (root)
+
+Click Save
+
+4️⃣ Get Your Website URL 🎉
+
+After a few seconds, GitHub will show:
+
+Your site is live at:
+https://hazratalin.github.io/myportfolio/
+
+
+👉 Open this URL in your browser
+✅ index.html will open automatically
+
+5️⃣ How It Works (Simple Explanation)
+
+GitHub Pages looks for index.html
+
+index.html is the default homepage
+
+You do NOT need to type index.html in the URL
+
+Example:
+
+✅ https://hazratalin.github.io/myportfolio/
+❌ https://hazratalin.github.io/myportfolio/index.html (optional)
+
+❌ Common Problems & Fixes
+❌ Page not loading?
+
+✔ Wait 1–2 minutes
+✔ Refresh hard (Ctrl + F5)
+
+❌ 404 Error?
+
+✔ Repo must be public
+✔ index.html must be lowercase
+✔ Correct branch (main)
+
+❌ CSS / JS not loading?
+
+✔ Use relative paths
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+
+❌ NOT:
+
+C:\Users\...
+
+🔥 BONUS: Custom Domain (Optional)
+
+You can use:
+
+www.myname.com
+
+
+with GitHub Pages later.
 
 
 
