@@ -22,6 +22,11 @@
       rel="stylesheet"
     />
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       body {
         scroll-behavior: smooth;
@@ -126,6 +131,74 @@
       input:checked + .track .moon-icon {
         opacity: 1;
       }
+
+      /* ===== LOGO BRAND SYSTEM ===== */
+      .logo-brand {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #0d6efd;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+
+        /* Soft glow */
+        text-shadow: 0 0 6px rgba(13, 110, 253, 0.6),
+          0 0 14px rgba(13, 110, 253, 0.4);
+
+        animation: glowPulse 3s ease-in-out infinite;
+      }
+
+      /* ===== SOFT GLOW PULSE ===== */
+      @keyframes glowPulse {
+        0%,
+        100% {
+          text-shadow: 0 0 6px rgba(13, 110, 253, 0.5),
+            0 0 14px rgba(13, 110, 253, 0.35);
+        }
+        50% {
+          text-shadow: 0 0 10px rgba(13, 110, 253, 0.9),
+            0 0 25px rgba(13, 110, 253, 0.6);
+        }
+      }
+
+      /* ===== 45 DEGREE SHINE SWEEP ===== */
+      .logo-brand::after {
+        content: "";
+        position: absolute;
+        top: -60%;
+        left: -80%;
+        width: 60%;
+        height: 220%;
+        background: linear-gradient(
+          45deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.15) 40%,
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(255, 255, 255, 0.15) 60%,
+          transparent 100%
+        );
+        animation: shineMove 3.2s linear infinite;
+      }
+
+      /* Shine animation */
+      @keyframes shineMove {
+        from {
+          left: -80%;
+        }
+        to {
+          left: 130%;
+        }
+      }
+
+      /* ===== DARK MODE TUNING ===== */
+      [data-bs-theme="dark"] .logo-brand {
+        color: #4dabf7;
+        text-shadow: 0 0 8px rgba(77, 171, 247, 0.7),
+          0 0 20px rgba(77, 171, 247, 0.5);
+      }
     </style>
   </head>
 
@@ -138,7 +211,7 @@
       id="navbar"
     >
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Hazrat Ali Nasar</a>
+        <a class="navbar-brand logo-brand" href="#"> Hazrat Ali Nasar </a>
 
         <button
           class="navbar-toggler"
