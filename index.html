@@ -163,17 +163,17 @@
         }
       }
 
-      /* ===== 45 DEGREE SHINE SWEEP ===== */
+      /* ===== 270 DEGREE (VERTICAL) SHINE SWEEP ===== */
       .logo-brand::after {
         content: "";
         position: absolute;
-        top: -60%;
-        left: -80%;
-        width: 60%;
-        height: 220%;
+        top: -80%; /* Start above the element */
+        left: -60%; /* Center horizontally */
+        width: 220%; /* Wide enough to cover during animation */
+        height: 60%; /* Short vertical sweep */
         background: linear-gradient(
-          45deg,
-          transparent 0%,
+          270deg,
+          /* Rotate gradient vertically */ transparent 0%,
           rgba(255, 255, 255, 0.15) 40%,
           rgba(255, 255, 255, 0.9) 50%,
           rgba(255, 255, 255, 0.15) 60%,
@@ -185,10 +185,10 @@
       /* Shine animation */
       @keyframes shineMove {
         from {
-          left: -80%;
+          top: -80%; /* Start above */
         }
         to {
-          left: 130%;
+          top: 130%; /* Move below */
         }
       }
 
@@ -197,11 +197,6 @@
         color: #4dabf7;
         text-shadow: 0 0 8px rgba(77, 171, 247, 0.7),
           0 0 20px rgba(77, 171, 247, 0.5);
-      }
-
-      .navbar-brand {
-        display: flex;
-        align-items: center;
       }
     </style>
   </head>
@@ -217,7 +212,7 @@
       <div class="container">
         <a class="navbar-brand logo-brand" href="#">
           <img
-            src="/assets/images/logo.png"
+            src="assets/images/logo.png"
             alt=""
             style="width: 70px; height: auto"
           />
